@@ -1,223 +1,180 @@
 body, h1, h2, h3, p, img, ul, li{
-	border:0; margin:0; padding:0;
+border:0;
+margin:0;
+padding:0;
 }
 
-/* RWD-friendly images (does not change desktop layout, just prevents overflow) */
 img{
-	max-width:100%;
-	height:auto;
-	display:block;
+max-width:100%;
+height:auto;
 }
 
 body{
-	background:#eaf8fb;
-	font-family:Arial, Helvetica, sans-serif;
-	font-size:13px;
+background:#eaf8fb;
+font-family:Arial, Helvetica, sans-serif;
+font-size:13px;
 }
 
 p{
-	letter-spacing:.04em;
-	line-height:21px;
+letter-spacing:.04em;
+line-height:21px;
 }
 
-div#header{
-	background-color:#333;
-	background-image:url(images/headerbkgd.png);
-	background-repeat:no-repeat;
-	background-position:left bottom;
-	color:#fff;
-	-webkit-border-bottom-right-radius: 4px;
-	-webkit-border-bottom-left-radius: 4px;
-	-moz-border-radius-bottomright: 4px;
-	-moz-border-radius-bottomleft: 4px;
-	border-bottom-right-radius: 4px;
-	border-bottom-left-radius: 4px;
-	margin:0 auto;
-	min-height:130px;
-	padding:45px 15px 15px;
-	width:870px;
+#header{
+background:#333 url(images/headerbkgd.png) no-repeat left bottom;
+color:#fff;
+margin:0 auto;
+min-height:130px;
+padding:45px 15px 15px;
+width:870px;
+border-radius:0 0 4px 4px;
 }
 
-ul.navigation {
-	list-style:none;
-	margin-top:20px;
+ul.navigation{
+list-style:none;
+margin-top:20px;
 }
 
 ul.navigation li{
-	display:inline-block;
-	margin:0 3px 5px;
+display:inline-block;
+margin:0 3px 5px;
 }
 
 ul.navigation li a{
-	background:#4a4a4a;
-	color:#fff;
-	-moz-border-radius:2px;
-	webkit-border-radius:2px;
-	border-radius:2px;
-	border:1px solid #595959;
-	padding:3px 10px;
-	text-decoration:none;
+background:#4a4a4a;
+color:#fff;
+border-radius:2px;
+border:1px solid #595959;
+padding:3px 10px;
+text-decoration:none;
 }
 
-div.content{
-	margin:15px auto;
-	width:900px;
+.content{
+margin:15px auto;
+width:900px;
 }
 
-div.col-right{
-	float:right;
-	width:660px
+.col-right{
+float:right;
+width:660px;
 }
 
-div.sidebar-left{
-	float:left;
-	padding:0 10px;
-	width:200px;
+.sidebar-left{
+float:left;
+padding:0 10px;
+width:200px;
 }
 
-div.sidebar-left a{
-	color:#445e64;
+.sidebar-left a{
+color:#445e64;
 }
 
 .list{
-	border-bottom:1px solid #c3dce1;
-	padding:0 0 20px 15px;
+border-bottom:1px solid #c3dce1;
+padding:0 0 20px 15px;
 }
 
 .list li{
-	margin-bottom:10px
+margin-bottom:10px;
 }
 
 .list li a{
-	font-weight:bold;
-	text-transform:uppercase;
-	font-size:11px;
+font-weight:bold;
+text-transform:uppercase;
+font-size:11px;
 }
 
-div#footer{
-	background-color:#c4d5d9;
-	margin:0 auto;
-	padding:15px;
-	text-align:center;
-	width:900px;
+#footer{
+background:#c4d5d9;
+margin:0 auto;
+padding:15px;
+text-align:center;
+width:900px;
 }
 
 .float-left{
-	float:left;
-	margin:0 10px 10px 0;
-}
-
-.float-right{
-	float:right;
-}
-
-.float-right img{
-	margin:0 0 10px 10px;
+float:left;
+margin:0 10px 10px 0;
 }
 
 .clear{
-	clear:both;
+clear:both;
 }
 
+/* EXTRA CREDIT ANIMATION */
 
-/* =========================================================
-   EXTRA CREDIT #1: CSS3 animation (uses existing header h2)
-   ========================================================= */
-
-@keyframes fadeText {
-	0% { opacity: 1; }
-	50% { opacity: 0.4; }
-	100% { opacity: 1; }
+@keyframes fadeText{
+0%{opacity:1;}
+50%{opacity:.4;}
+100%{opacity:1;}
 }
 
 #header h2{
-	animation: fadeText 4s infinite;
+animation:fadeText 4s infinite;
 }
 
+/* MOBILE RESPONSIVE */
 
-/* =========================================================
-   RWD: Mobile layout (one column, no horizontal scrolling)
-   ========================================================= */
+@media (max-width:600px){
 
-@media (max-width: 600px){
-
-	/* Make main containers fluid */
-	div#header{
-		width:auto;
-		margin:0;
-		padding:25px 15px 15px;
-		border-bottom-right-radius:0;
-		border-bottom-left-radius:0;
-		background-size:cover;
-	}
-
-	div.content{
-		width:auto;
-		margin:15px 10px;
-	}
-
-	div#footer{
-		width:auto;
-		margin:0;
-	}
-
-	/* Switch to one-column layout */
-	div.sidebar-left,
-	div.col-right{
-		float:none;
-		width:auto;
-		padding:0;
-	}
-
-	/* Navigation stack for easier tapping */
-	ul.navigation li{
-		display:block;
-		margin:0 0 10px;
-	}
-
-	ul.navigation li a{
-		display:block;
-		padding:10px;
-	}
-
-	/* Stop floated image behavior on small screens */
-	.float-left,
-	.float-right{
-		float:none;
-		margin:0 0 12px 0;
-	}
-
-	/* Optional: if you want the animation OFF on mobile, uncomment:
-	#header h2{
-		animation:none;
-	}
-	*/
+#header{
+width:auto;
+margin:0;
+padding:25px 15px;
 }
 
-
-/* =========================================================
-   EXTRA CREDIT #2: Hover capability detection
-   ========================================================= */
-
-/* Devices that support hover (desktop/laptop) */
-@media (hover: hover){
-	ul.navigation li a:hover{
-		background-color:black;
-	}
-
-	.sidebar-left a:hover{
-		text-decoration:none;
-	}
+.content{
+width:auto;
+margin:15px 10px;
 }
 
-/* Devices without hover (touch screens) */
-@media (hover: none){
-	ul.navigation li a{
-		text-decoration:underline;
-	}
+#footer{
+width:auto;
+margin:0;
+}
 
-	/* optional: visible tap feedback */
-	ul.navigation li a:active{
-		background-color:black;
-	}
+.sidebar-left,
+.col-right{
+float:none;
+width:auto;
+padding:0;
+}
+
+ul.navigation li{
+display:block;
+margin:0 0 10px;
+}
+
+ul.navigation li a{
+display:block;
+padding:10px;
+}
+
+.float-left{
+float:none;
+margin:0 0 12px 0;
+}
+
+}
+
+/* EXTRA CREDIT HOVER DETECTION */
+
+@media (hover:hover){
+
+ul.navigation li a:hover{
+background:black;
+}
+
+.sidebar-left a:hover{
+text-decoration:none;
+}
+
+}
+
+@media (hover:none){
+
+ul.navigation li a{
+text-decoration:underline;
+}
+
 }
