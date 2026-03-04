@@ -2,7 +2,7 @@ body, h1, h2, h3, p, img, ul, li{
 	border:0; margin:0; padding:0;
 }
 
-/* Global helpers for RWD */
+/* RWD-friendly images (does not change desktop layout, just prevents overflow) */
 img{
 	max-width:100%;
 	height:auto;
@@ -38,16 +38,6 @@ div#header{
 	width:870px;
 }
 
-/* Extra credit option 1: CSS3 animation using existing element */
-div#header h2{
-	animation: breathe 4s ease-in-out infinite;
-	transform-origin: left center;
-}
-@keyframes breathe{
-	0%, 100% { opacity: 1; }
-	50% { opacity: .75; }
-}
-
 ul.navigation {
 	list-style:none;
 	margin-top:20px;
@@ -67,32 +57,6 @@ ul.navigation li a{
 	border:1px solid #595959;
 	padding:3px 10px;
 	text-decoration:none;
-}
-
-/* Extra credit option 2: only use :hover when the device can hover */
-@media (hover:hover){
-	ul.navigation li a:hover{
-		background-color:#000;
-	}
-	div.sidebar-left a:hover{
-		text-decoration:none;
-	}
-}
-
-/* For devices with NO hover (touch): make links obvious and use :active */
-@media (hover:none){
-	ul.navigation li a{
-		text-decoration:underline;
-	}
-	ul.navigation li a:active{
-		background-color:#000;
-	}
-	div.sidebar-left a{
-		text-decoration:underline;
-	}
-	div.sidebar-left a:active{
-		text-decoration:none;
-	}
 }
 
 div.content{
@@ -155,19 +119,36 @@ div#footer{
 	clear:both;
 }
 
-/* ---------------------------
-   MOBILE / SMALL SCREEN LAYOUT
-   --------------------------- */
+
+/* =========================================================
+   EXTRA CREDIT #1: CSS3 animation (uses existing header h2)
+   ========================================================= */
+
+@keyframes fadeText {
+	0% { opacity: 1; }
+	50% { opacity: 0.4; }
+	100% { opacity: 1; }
+}
+
+#header h2{
+	animation: fadeText 4s infinite;
+}
+
+
+/* =========================================================
+   RWD: Mobile layout (one column, no horizontal scrolling)
+   ========================================================= */
+
 @media (max-width: 600px){
 
 	/* Make main containers fluid */
 	div#header{
 		width:auto;
 		margin:0;
-		border-bottom-right-radius: 0;
-		border-bottom-left-radius: 0;
 		padding:25px 15px 15px;
-		background-size: cover;
+		border-bottom-right-radius:0;
+		border-bottom-left-radius:0;
+		background-size:cover;
 	}
 
 	div.content{
@@ -206,9 +187,37 @@ div#footer{
 		margin:0 0 12px 0;
 	}
 
-	/* Optional: if you want the animation off on mobile, uncomment:
-	div#header h2{
+	/* Optional: if you want the animation OFF on mobile, uncomment:
+	#header h2{
 		animation:none;
 	}
 	*/
+}
+
+
+/* =========================================================
+   EXTRA CREDIT #2: Hover capability detection
+   ========================================================= */
+
+/* Devices that support hover (desktop/laptop) */
+@media (hover: hover){
+	ul.navigation li a:hover{
+		background-color:black;
+	}
+
+	.sidebar-left a:hover{
+		text-decoration:none;
+	}
+}
+
+/* Devices without hover (touch screens) */
+@media (hover: none){
+	ul.navigation li a{
+		text-decoration:underline;
+	}
+
+	/* optional: visible tap feedback */
+	ul.navigation li a:active{
+		background-color:black;
+	}
 }
